@@ -155,7 +155,7 @@ const App = () => {
             <Progress multi className="score-bar">
               <Progress bar color="dark" value={ correct_count } max={ que_count } />
               <Progress bar color="secondary" value={ incorrect_count } max={ que_count } />
-              <Progress bar color="light" value={ que_count - (que_index - !isAnswered) - incorrect_count } max={ que_count } />
+              <Progress bar color="light" value={ Math.max(que_count - (que_index - !isAnswered) - incorrect_count, 0) } max={ que_count } />
             </Progress>
           </div>
         </Container>
