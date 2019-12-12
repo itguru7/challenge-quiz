@@ -80,9 +80,9 @@ const App = () => {
         <>
           { answers.map((ans, index) => 
             <Col key={index} md={6} className="text-center mb-5">
-              <Button color="light"
+              <button className={`btn-answer`}
                 onClick={ () => onClickAnswer(ans) }
-              >{ decodeURIComponent(ans.text) }</Button>
+              >{ decodeURIComponent(ans.text) }</button>
             </Col>
           ) }
         </>
@@ -92,7 +92,7 @@ const App = () => {
         <>
           { answers.map((ans, index) => 
             <Col key={index} md={6} className="text-center mb-5">
-              <Button color={ ans.text === answer.text ? 'dark' : 'light' } disabled={ ans.text !== answer.text }>{ decodeURIComponent(ans.text) }</Button>
+              <button className={`btn-answer ${ ans.text === answer.text ? 'answer-click' : 'answer-incorrect' }` }>{ decodeURIComponent(ans.text) }</button>
             </Col>
           ) }
         </>
@@ -102,7 +102,7 @@ const App = () => {
         <>
           { answers.map((ans, index) => 
             <Col key={index} md={6} className="text-center mb-5">
-              <Button color={ ans.text === answer.text ? 'dark' : (ans.correct ? 'white' : 'light') } disabled={ ans.text !== answer.text }>{ decodeURIComponent(ans.text) }</Button>
+              <button className={`btn-answer ${ ans.text === answer.text ? 'answer-click' : (ans.correct ? 'answer-correct' : 'answer-incorrect') }` }>{ decodeURIComponent(ans.text) }</button>
             </Col>
           ) }
         </>
@@ -126,7 +126,7 @@ const App = () => {
 
           <div className="question-body">
             <h3 className="mb-5">{ decodeURIComponent(questions[que_index - 1].question) }</h3>
-            <Row className="answers-list mb-5">
+            <Row className="mb-5">
               { renderAnswers() }
             </Row>
             { isAnswered && (
